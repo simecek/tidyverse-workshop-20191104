@@ -1,0 +1,183 @@
+---
+title: "Visualize Data"
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+## Your Turn 0
+
+Confer with your group.
+
+What relationship do you expect to see between engine
+size (displ) and mileage (hwy)?
+
+```{r}
+mpg
+```
+
+
+## Your Turn 1
+
+Run the code on the slide to make a graph. Pay strict attention to spelling, capitalization, and parentheses!
+
+```{r}
+# add your code here
+```
+
+## Your Turn 2
+
+Add `color`, `size`, `alpha`, and `shape` aesthetics to your graph. Experiment.  
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+## Your Turn 3
+
+What do each of these do?
+(run the code, interpret, convince your group)
+
+```{r}
+# Makes a plot that the commands below will modify
+q <- ggplot(mpg) + geom_point(aes(x = displ, y = hwy))
+
+q + facet_grid(. ~ cyl)
+q + facet_grid(drv ~ .)
+q + facet_grid(drv ~ cyl)
+q + facet_wrap(~ class)
+```
+
+## Your Turn 4
+
+Replace this scatterplot with one that draws boxplots. Use the cheatsheet. Try your best guess.
+
+```{r}
+ggplot(mpg) + geom_point(aes(class, hwy))
+```
+
+## Your Turn 5
+
+In your group, predict what this code will do.
+Then run it.
+
+```{r}
+ggplot(mpg) +
+  geom_point(aes(displ, hwy)) +
+  geom_smooth(aes(displ, hwy))
+```
+
+## Your Turn 6
+
+Create the plot on the slide: a white density 2d overlaid with colored points.
+Consult the cheat sheet, and then your neighbor.
+
+```{r}
+# add your code here
+```
+
+## Your Turn 7
+
+If I run this code, what will ggplot2 put on the y axis?
+Try it and see.
+
+```{r}
+ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = cut))
+```
+
+## Challenge 1
+
+Can you alter this code to make the plot on a slide?
+
+```{r}
+ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = cut))
+```
+
+## Challenge 2
+
+Can you alter this code to make the plot on a slide?
+
+```{r}
+ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = cut))
+```
+
+## Challenge 3
+
+Can you alter this code to make the plot on a slide?
+
+```{r}
+ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = cut))
+```
+
+## Your Turn 8
+
+What do each of these adjustments do?
+(run the code, interpret, convince your group)
+
+```{r}
+# Makes a plot that the commands below will modify
+p <- ggplot(diamonds, aes(x = cut, fill = clarity))
+
+p + geom_bar(position = "stack")
+p + geom_bar(position = "dodge")
+p + geom_bar(position = "identity")
+p + geom_bar(position = "fill")
+```
+
+## Your Turn 9
+
+Make the plot on the slide of the density of diamond prices grouped
+and colored by cut.
+
+```{r}
+# add your code here
+```
+
+## Your Turn 10
+
+Experiment with labels, themes, and scales to make a more clear
+graph
+
+```{r}
+# add your code here
+```
+
+## Your Turn 11
+
+Save your last plot and then locate it in your files panel.
+
+```{r}
+# add your code here
+```
+
+## Your Turn 12
+
+Create an interactive graph. Can you add an extra information to on-hover info? Can you restrict it to just class?
+
+```{r}
+p <- ggplot(mpg) + 
+  geom_point(aes(displ, hwy)) +
+  geom_smooth(aes(displ, hwy))
+
+library(plotly)
+ggplotly(p)
+```
+
+***
+
+# Take aways
+
+You can use this code template to make thousands of graphs with **ggplot2**.
+
+```{r eval = FALSE}
+ggplot(data = <DATA>) +
+  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+```
+
+You can find more complex template in the cheat sheet.
